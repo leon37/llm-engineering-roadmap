@@ -17,7 +17,6 @@ X = torch.tensor([[1.0, 2.0, 3.0, 4.0],
 y = torch.tensor([0, 2])  # 真实标签
 
 # 2. 初始化权重 (需要梯度)
-# TODO: 初始化 W (shape?) 和 b (shape?)，并开启 requires_grad
 W = torch.normal(mean=0, std=0.01, size=(4, 3), requires_grad=True)
 b = torch.zeros(3, requires_grad=True)
 
@@ -26,7 +25,6 @@ def softmax(O):
     手动实现 Softmax
     提示：为了数值稳定性，建议先对 O 做减去最大值的操作 (O - O.max(axis=1, keepdims=True))
     """
-    # TODO: 实现 softmax 公式
     o_max, _ = torch.max(O, dim=1, keepdim=True)
     o_without_max = O-o_max
     O_exp = torch.exp(o_without_max)

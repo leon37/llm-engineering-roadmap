@@ -36,11 +36,9 @@ class SoftmaxTrainer:
         self.optimizer = torch.optim.SGD(self.net.parameters(), lr=self.lr)
 
     def _build_model(self):
-        # TODO: 返回一个 nn.Sequential
         return nn.Sequential(nn.Flatten(), nn.Linear(in_features=784, out_features=10))
 
     def _init_weights(self, m):
-        # TODO:如果是 nn.Linear 层，则初始化权重
         if type(m) == nn.Linear:
             nn.init.normal_(m.weight, 0, 0.01)
 
@@ -85,7 +83,6 @@ class SoftmaxTrainer:
                 X, y = X.to(self.device), y.to(self.device)
 
                 # --- 核心训练步 (The Atomic Transaction) ---
-                # TODO: 补全 1.清零 2.前向 3.算loss 4.反向 5.更新
                 self.optimizer.zero_grad()
                 y_hat = self.net(X)
                 loss = self.loss_fn(y_hat, y)
